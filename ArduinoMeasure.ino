@@ -33,6 +33,7 @@ void setup()
 
 void loop() 
 {
+  Serial.flush();
 
   // Đọc và xử lí chuỗi từ app gửi về
     if (Serial.available()) {
@@ -99,8 +100,10 @@ void loop()
           //Serial.print("|");
           //Serial.println(E_Vol);
           runCV(S_Vol, E_Vol, Step, Freq);
+          //runCV(-200, 600, 2, 25);
           //Serial.println("Backward scan");
           runCV(E_Vol, S_Vol, Step, Freq);
+          //runCV(600, -200, 2, 25);
           //Serial.print(S_Vol);
           //Serial.print("|");
           //Serial.println(E_Vol);
@@ -163,7 +166,7 @@ void biasAndSample(int16_t voltage, double rate)
 {
   //Serial.print("Time(ms): "); Serial.print(millis()); 
   //Serial.print(", Voltage(mV): "); 
-  delay(100);
+  delay(10);
   Serial.print(voltage);
 
   setBiasVoltage(voltage);
