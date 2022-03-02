@@ -62,12 +62,12 @@ namespace CsharpInterface
             RollingPointPairList list = new RollingPointPairList(60000);
             LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
 
-            myPane.XAxis.Scale.Min = -10;
-            myPane.XAxis.Scale.Max = 10;
+            myPane.XAxis.Scale.Min = -500;
+            myPane.XAxis.Scale.Max = 500;
             myPane.XAxis.Scale.MinorStep = 1;
             myPane.XAxis.Scale.MajorStep = 5;
-            myPane.YAxis.Scale.Min = -20;
-            myPane.YAxis.Scale.Max = 20;
+            myPane.YAxis.Scale.Min = -30;
+            myPane.YAxis.Scale.Max = 30;
 
             myPane.AxisChange();
         }
@@ -115,8 +115,8 @@ namespace CsharpInterface
                     double.TryParse(SDatas, out datas); // Chuyển đổi sang   kiểu double
                     double.TryParse(SRealTime, out realtime);
 
-                    realtime = realtime / 100; // Đối ms sang s
-                                               //datas = datas ;
+                    //realtime = realtime / 100; // Đối ms sang s
+                    datas = datas * 3 / 2.3;
                     status = 1; // Bắt sự kiện xử lý xong chuỗi, đổi starus về 1 để hiển thị dữ liệu trong ListView và vẽ đồ thị
                 }
                 catch
@@ -198,8 +198,8 @@ namespace CsharpInterface
             // Tự động Scale theo trục x
             if (realtime > xScale.Max - xScale.MajorStep)
             {
-                xScale.Max = realtime + xScale.MajorStep;
-                xScale.Min = xScale.Max - 30;
+                xScale.Max = (realtime + xScale.MajorStep);
+                xScale.Min = (xScale.Max - 30);
             }
 
             // Tự động Scale theo trục y
@@ -241,12 +241,12 @@ namespace CsharpInterface
             RollingPointPairList list = new RollingPointPairList(60000);
             LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
 
-            myPane.XAxis.Scale.Min = -10;
-            myPane.XAxis.Scale.Max = 10;
+            myPane.XAxis.Scale.Min = Convert.ToInt32(txt_SVol.Text)-30;
+            myPane.XAxis.Scale.Max = Convert.ToInt32(txt_EVol.Text)+30;
             myPane.XAxis.Scale.MinorStep = 1;
             myPane.XAxis.Scale.MajorStep = 5;
-            myPane.YAxis.Scale.Min = -20;
-            myPane.YAxis.Scale.Max = 20;
+            myPane.YAxis.Scale.Min = -30;
+            myPane.YAxis.Scale.Max = 30;
 
             zedGraphControl1.AxisChange();
         }
