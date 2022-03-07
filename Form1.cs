@@ -57,7 +57,7 @@ namespace CsharpInterface
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Title.Text = "Cyclic - Voltammetry Graph";
             myPane.XAxis.Title.Text = "Potential (mV)";
-            myPane.YAxis.Title.Text = "Current (mA)";
+            myPane.YAxis.Title.Text = "Current (µA)";
 
             RollingPointPairList list = new RollingPointPairList(60000);
             LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
@@ -116,7 +116,7 @@ namespace CsharpInterface
                     double.TryParse(SRealTime, out realtime);
 
                     //realtime = realtime / 100; // Đối ms sang s
-                    datas = datas * 3 / 2.3;
+                    //datas = datas * 3 / 2.3;
                     status = 1; // Bắt sự kiện xử lý xong chuỗi, đổi starus về 1 để hiển thị dữ liệu trong ListView và vẽ đồ thị
                 }
                 catch
@@ -236,7 +236,7 @@ namespace CsharpInterface
             GraphPane myPane = zedGraphControl1.GraphPane;
             myPane.Title.Text = "Current-Voltage chart for Biomedical Testing";
             myPane.XAxis.Title.Text = "Potential (mV)";
-            myPane.YAxis.Title.Text = "Current (mA)";
+            myPane.YAxis.Title.Text = "Current (µA)";
 
             RollingPointPairList list = new RollingPointPairList(60000);
             LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
@@ -272,29 +272,50 @@ namespace CsharpInterface
             //int num = 1;
             double sum = 0;
             int countFrame = 1;
-            frame = 10;
+            frame = 65;
             //n = 802;
             //n = (Convert.ToInt32(txt_EVol) - Convert.ToInt32(txt_SVol)) / Convert.ToInt32(txt_Step) + 1;
 
-            while (countFrame < frame)
+            while (countFrame < frame / 2)
             {
-
                 sum += a[countFrame - 1];
                 a[countFrame - 1] = sum / countFrame ;
                 countFrame++;
                 //num = num + 1;
             }
 
-            for (int i = frame - 1; i < numberSample; i++) 
+            for (int i = frame / 2 + 1; i <= numberSample; i++) 
             {
                 sum = 0;
-                for (int j = i + 2 - frame; j <= i; j++) 
+                for (int j = i + (frame / 2 + 1) - frame; j <= i - (frame / 2 + 1) + frame; j++)
                 {
                     sum += b[j];
                 }
                 a[i] = sum / frame;
                 sum = 0;
-                //i++;
+
+                //if (i <= numberSample) 
+                //{
+                //    sum = 0;
+                //    for (int j = i + (frame / 2 + 1) - frame; j <= i - (frame / 2 + 1) + frame; j++)
+                //    {
+                //        sum += b[j];
+                //    }
+                //    a[i] = sum / frame;
+                //    sum = 0;
+                //}
+
+                //if (i > numberSample)
+                //{
+                //    sum = 0;
+                //    for (int j = i - frame; j <= i ; j++)
+                //    {
+                //        sum += b[j];
+                //    }
+                //    a[i] = sum / frame;
+                //    sum = 0;
+                //}
+
             }
             
             
