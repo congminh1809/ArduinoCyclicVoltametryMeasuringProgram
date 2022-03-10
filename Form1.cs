@@ -40,6 +40,8 @@ namespace CsharpInterface
         string[] bufferVStr = new string[1600];
         int recieverCount = 0;
 
+        
+
 
         //int voltageToSmoothCount = 0;
 
@@ -107,8 +109,9 @@ namespace CsharpInterface
 
                     serialPort1.Close();
                     Data_Listview();
-                    //tempC = bufferC;
+                    
                     SmoothingData(bufferC);
+                    ClearZedGraph();
                     Draw();
                 }
                 //Draw();
@@ -156,7 +159,7 @@ namespace CsharpInterface
             
         }
 
-
+        
         // Hiển thị dữ liệu trong ListView
         private
             void Data_Listview()
@@ -179,7 +182,10 @@ namespace CsharpInterface
                 }
                 //SmoothingData(bufferC);
                 //Draw();
-                }
+
+                
+                
+            }
         }
 
 
@@ -233,6 +239,7 @@ namespace CsharpInterface
                 yScale.Min = datas - yScale.MajorStep;
             }
 
+
             zedGraphControl1.AxisChange();
             zedGraphControl1.Invalidate();
             zedGraphControl1.Refresh();
@@ -248,6 +255,8 @@ namespace CsharpInterface
         private
             void ClearZedGraph()
         {
+            int graphHeightMax = 50;
+            int graphHeightMin = -50;
             zedGraphControl1.GraphPane.CurveList.Clear(); // Xóa đường
             zedGraphControl1.GraphPane.GraphObjList.Clear(); // Xóa đối tượng
 
@@ -262,12 +271,16 @@ namespace CsharpInterface
             RollingPointPairList list = new RollingPointPairList(60000);
             LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
 
-            myPane.XAxis.Scale.Min = Convert.ToInt32(txt_SVol.Text)-30;
-            myPane.XAxis.Scale.Max = Convert.ToInt32(txt_EVol.Text)+30;
+            myPane.XAxis.Scale.Min = Convert.ToInt32(txt_SVol.Text) - 150;
+            myPane.XAxis.Scale.Max = Convert.ToInt32(txt_EVol.Text) + 150;
             myPane.XAxis.Scale.MinorStep = 1;
             myPane.XAxis.Scale.MajorStep = 5;
-            myPane.YAxis.Scale.Min = -100;
-            myPane.YAxis.Scale.Max = 100;
+            //myPane.YAxis.Scale.Min = -20;
+            //myPane.YAxis.Scale.Max = 50;
+            graphHeightMax = Convert.ToInt32(bufferC.Max());
+            graphHeightMin = Convert.ToInt32(bufferC.Min());
+            myPane.YAxis.Scale.Min = graphHeightMin - 5;
+            myPane.YAxis.Scale.Max = graphHeightMax + 5;
 
             zedGraphControl1.AxisChange();
         }
@@ -293,7 +306,7 @@ namespace CsharpInterface
             //int num = 1;
             double sum = 0;
             //int countFrame = 0;
-            frame = 45;
+            frame = Convert.ToInt32(txt_Frame.Text);
             //n = 802;
             //n = (Convert.ToInt32(txt_EVol) - Convert.ToInt32(txt_SVol)) / Convert.ToInt32(txt_Step) + 1;
 
@@ -507,8 +520,10 @@ namespace CsharpInterface
                 //Làm mịn dữ liệu
                 //SmoothingData(dataToSmooth);
                 //Draw();
+                btPause.Text = "Resume";
             }
             else
+                //serialPort1.Open();
                 MessageBox.Show("Bạn không thể dừng khi chưa kết nối với thiết bị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -535,11 +550,28 @@ namespace CsharpInterface
                         ResetValue();
                     }
                     else
-                        MessageBox.Show("Bạn không thể dừng khi chưa kết nối với thiết bị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    listView1.Items.Clear(); // Xóa listview
+
+                    //dataToSmooth = new double[5000];
+                    //Xóa đường trong đồ thị
+                    ClearZedGraph();
+
+                    //Xóa dữ liệu trong Form
+                    ResetValue();
+                    //MessageBox.Show("Bạn không thể dừng khi chưa kết nối với thiết bị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
-                MessageBox.Show("Bạn không thể xóa khi chưa kết nối với thiết bị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            listView1.Items.Clear(); // Xóa listview
+
+            //dataToSmooth = new double[5000];
+            //Xóa đường trong đồ thị
+            ClearZedGraph();
+
+            //Xóa dữ liệu trong Form
+            ResetValue();
+            //MessageBox.Show("Bạn không thể xóa khi chưa kết nối với thiết bị", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         // Sự kiện nhấn nút Run
@@ -556,6 +588,7 @@ namespace CsharpInterface
             //ResetValue();
             //Draw();
             recieverCount = 0;
+            progressBarMeasure.Value = 0;
 
         }
 
