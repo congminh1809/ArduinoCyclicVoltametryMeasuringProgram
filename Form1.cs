@@ -33,12 +33,14 @@ namespace CsharpInterface
         //double[] voltageToSmooth = new double[10000];
         ////double[] voltageToSmooth = { -200, -198, -196, -194, -192, -190, -188, -186, -184, -182, -180, -178, -176, -174, -172, -170, -168, -166, -164, -162, -160, -158, -156, -154, -152, -150, -148, -146, -144, -142, -140, -138, -136, -134, -132, -130, -128, -126, -124, -122, -120, -118, -116, -114, -112, -110, -108, -106, -104, -102, -100, -98, -96, -94, -92, -90, -88, -86, -84, -82, -80, -78, -76, -74, -72, -70, -68, -66, -64, -62, -60, -58, -56, -54, -52, -50, -48, -46, -44, -42, -40, -38, -36, -34, -32, -30, -28, -26, -24, -22, -20, -18, -16, -14, -12, -10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 222, 224, 226, 228, 230, 232, 234, 236, 238, 240, 242, 244, 246, 248, 250, 252, 254, 256, 258, 260, 262, 264, 266, 268, 270, 272, 274, 276, 278, 280, 282, 284, 286, 288, 290, 292, 294, 296, 298, 300, 302, 304, 306, 308, 310, 312, 314, 316, 318, 320, 322, 324, 326, 328, 330, 332, 334, 336, 338, 340, 342, 344, 346, 348, 350, 352, 354, 356, 358, 360, 362, 364, 366, 368, 370, 372, 374, 376, 378, 380, 382, 384, 386, 388, 390, 392, 394, 396, 398, 400, 402, 404, 406, 408, 410, 412, 414, 416, 418, 420, 422, 424, 426, 428, 430, 432, 434, 436, 438, 440, 442, 444, 446, 448, 450, 452, 454, 456, 458, 460, 462, 464, 466, 468, 470, 472, 474, 476, 478, 480, 482, 484, 486, 488, 490, 492, 494, 496, 498, 500, 502, 504, 506, 508, 510, 512, 514, 516, 518, 520, 522, 524, 526, 528, 530, 532, 534, 536, 538, 540, 542, 544, 546, 548, 550, 552, 554, 556, 558, 560, 562, 564, 566, 568, 570, 572, 574, 576, 578, 580, 582, 584, 586, 588, 590, 592, 594, 596, 598, 600, 600, 598, 596, 594, 592, 590, 588, 586, 584, 582, 580, 578, 576, 574, 572, 570, 568, 566, 564, 562, 560, 558, 556, 554, 552, 550, 548, 546, 544, 542, 540, 538, 536, 534, 532, 530, 528, 526, 524, 522, 520, 518, 516, 514, 512, 510, 508, 506, 504, 502, 500, 498, 496, 494, 492, 490, 488, 486, 484, 482, 480, 478, 476, 474, 472, 470, 468, 466, 464, 462, 460, 458, 456, 454, 452, 450, 448, 446, 444, 442, 440, 438, 436, 434, 432, 430, 428, 426, 424, 422, 420, 418, 416, 414, 412, 410, 408, 406, 404, 402, 400, 398, 396, 394, 392, 390, 388, 386, 384, 382, 380, 378, 376, 374, 372, 370, 368, 366, 364, 362, 360, 358, 356, 354, 352, 350, 348, 346, 344, 342, 340, 338, 336, 334, 332, 330, 328, 326, 324, 322, 320, 318, 316, 314, 312, 310, 308, 306, 304, 302, 300, 298, 296, 294, 292, 290, 288, 286, 284, 282, 280, 278, 276, 274, 272, 270, 268, 266, 264, 262, 260, 258, 256, 254, 252, 250, 248, 246, 244, 242, 240, 238, 236, 234, 232, 230, 228, 226, 224, 222, 220, 218, 216, 214, 212, 210, 208, 206, 204, 202, 200, 198, 196, 194, 192, 190, 188, 186, 184, 182, 180, 178, 176, 174, 172, 170, 168, 166, 164, 162, 160, 158, 156, 154, 152, 150, 148, 146, 144, 142, 140, 138, 136, 134, 132, 130, 128, 126, 124, 122, 120, 118, 116, 114, 112, 110, 108, 106, 104, 102, 100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70, 68, 66, 64, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0, -2, -4, -6, -8, -10, -12, -14, -16, -18, -20, -22, -24, -26, -28, -30, -32, -34, -36, -38, -40, -42, -44, -46, -48, -50, -52, -54, -56, -58, -60, -62, -64, -66, -68, -70, -72, -74, -76, -78, -80, -82, -84, -86, -88, -90, -92, -94, -96, -98, -100, -102, -104, -106, -108, -110, -112, -114, -116, -118, -120, -122, -124, -126, -128, -130, -132, -134, -136, -138, -140, -142, -144, -146, -148, -150, -152, -154, -156, -158, -160, -162, -164, -166, -168, -170, -172, -174, -176, -178, -180, -182, -184, -186, -188, -190, -192, -194, -196, -198, -200 };
 
-        double[] bufferC = new double[1600];
-        double[] tempC = new double[1600];
-        double[] bufferV = new double[1600];
-        string[] bufferCStr = new string[1600];
-        string[] bufferVStr = new string[1600];
+        double[] bufferC = new double[16000];
+        double[] tempC = new double[16000];
+        double[] bufferV = new double[16000];
+        string[] bufferCStr = new string[16000];
+        string[] bufferVStr = new string[16000];
         int recieverCount = 0;
+        int repeatCount = 1;
+        int graphColor = 1;
 
         
 
@@ -71,7 +73,8 @@ namespace CsharpInterface
             myPane.YAxis.Title.Text = "Current (µA)";
 
             RollingPointPairList list = new RollingPointPairList(60000);
-            LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
+            //LineItem curve = myPane.AddCurve("Data", list, Color.Red, SymbolType.None);
+            LineItem curve = myPane.AddCurve("Data", list, Color.BlueViolet, SymbolType.None);
 
             myPane.XAxis.Scale.Min = -500;
             myPane.XAxis.Scale.Max = 500;
@@ -102,6 +105,39 @@ namespace CsharpInterface
                     progressBarMeasure.Value = 100;
                 }
 
+                //if (recieverCount == numberSample / repeatCount)
+                //{
+                //    Data_Listview();
+                //    SmoothingData(bufferC);
+                //    graphColor = 1;
+                //    ClearZedGraph();
+                //    Draw();
+                //}
+                //if (recieverCount == (numberSample / repeatCount) * 2)
+                //{
+                //    Data_Listview();
+                //    SmoothingData(bufferC);
+                //    graphColor = 2;
+                //    ClearZedGraph();
+                //    Draw();
+                //}
+                //if (recieverCount == (numberSample / repeatCount) * 3)
+                //{
+                //    Data_Listview();
+                //    SmoothingData(bufferC);
+                //    graphColor = 3;
+                //    ClearZedGraph();
+                //    Draw();
+                //}
+                //if (recieverCount == (numberSample / repeatCount) * 4)
+                //{
+                //    Data_Listview();
+                //    SmoothingData(bufferC);
+                //    graphColor = 4;
+                //    ClearZedGraph();
+                //    Draw();
+                //}
+
                 if (recieverCount == numberSample)
                 {
                     //recieverCount = 0;
@@ -113,6 +149,8 @@ namespace CsharpInterface
                     SmoothingData(bufferC);
                     ClearZedGraph();
                     Draw();
+                    btConnect.Text = "Connect";
+                    progressBarMeasure.Value = 0;
                 }
                 //Draw();
                 //Data_Listview();
@@ -213,7 +251,8 @@ namespace CsharpInterface
             //tempC = bufferC;
             //SmoothingData(bufferC);
 
-            for (int i = 0; i < recieverCount; i++)
+            for (int i = numberSample / repeatCount * (repeatCount - 2); i < numberSample / repeatCount * (repeatCount - 1); i++)
+            //for (int i = 0; i < numberSample; i++)
             {
                 list.Add(bufferV[i], bufferC[i]);
             }
@@ -269,7 +308,24 @@ namespace CsharpInterface
             myPane.YAxis.Title.Text = "Current (µA)";
 
             RollingPointPairList list = new RollingPointPairList(60000);
-            LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
+            //LineItem curve = myPane.AddCurve("Dữ liệu", list, Color.Red, SymbolType.None);
+            if (graphColor == 1) 
+            {
+                LineItem curve = myPane.AddCurve("Data", list, Color.BlueViolet, SymbolType.None);
+            }
+            if (graphColor == 2)
+            {
+                LineItem curve = myPane.AddCurve("Data", list, Color.YellowGreen, SymbolType.None);
+            }
+            if (graphColor == 3)
+            {
+                LineItem curve = myPane.AddCurve("Data", list, Color.OrangeRed, SymbolType.None);
+            }
+            if (graphColor == 4)
+            {
+                LineItem curve = myPane.AddCurve("Data", list, Color.Firebrick, SymbolType.None);
+            }
+
 
             myPane.XAxis.Scale.Min = Convert.ToInt32(txt_SVol.Text) - 150;
             myPane.XAxis.Scale.Max = Convert.ToInt32(txt_EVol.Text) + 150;
@@ -452,7 +508,12 @@ namespace CsharpInterface
             {
                 serialPort1.PortName = comboBoxName.Text; // Lấy cổng COM
                 serialPort1.BaudRate = Convert.ToInt32(comboBR.Text); // Baudrate là 9600, trùng với baudrate của Arduino
-                numberSample = ((Convert.ToInt32(txt_EVol.Text) - Convert.ToInt32(txt_SVol.Text)) / Convert.ToInt32(txt_Step.Text) + 1)*2;
+                repeatCount = Convert.ToInt32(txt_Repeat.Text);
+                numberSample = ((Convert.ToInt32(txt_EVol.Text) - Convert.ToInt32(txt_SVol.Text)) / Convert.ToInt32(txt_Step.Text) + 1) * 2 * repeatCount;
+                if (repeatCount<1 || repeatCount>4)
+                {
+                    repeatCount = 4;
+                }
                 //serialPort1.Write("1"); //Gửi ký tự "2" qua Serial, tương ứng với state = 1
                 //dataToSmooth = new double[5000];
                 try
@@ -463,6 +524,9 @@ namespace CsharpInterface
                     serialPort1.WriteLine(str);
                     btConnect.Text = "Disconnect";
                     btExit.Enabled = false;
+                    recieverCount = 0;      //Biến đếm số giá trị nhận được chạy lại từ đầu
+                    progressBarMeasure.Value = 0;   //Thanh trạng thái "Quá trình đo" chạy lại từ đầu
+
                 }
                 catch
                 {
@@ -583,12 +647,14 @@ namespace CsharpInterface
                 //dataToSmooth = new double[5000];
                 serialPort1.Write("1"); //Gửi ký tự "1" qua Serial, chạy hàm tạo Random ở Arduino
             }
+            //else
+            //{
+            //    serialPort1.Open();
+            //}
             listView1.Items.Clear(); // Xóa listview
-            ClearZedGraph();
-            //ResetValue();
-            //Draw();
-            recieverCount = 0;
-            progressBarMeasure.Value = 0;
+            ClearZedGraph();        //Xóa đồ  thị
+            recieverCount = 0;      //Biến đếm số giá trị nhận được chạy lại từ đầu
+            progressBarMeasure.Value = 0;   //Thanh trạng thái "Quá trình đo" chạy lại từ đầu
 
         }
 
@@ -640,5 +706,26 @@ namespace CsharpInterface
         {
 
         }
+
+        private void txt_Frame_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Repeat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+/*
+ - Đo repeat:
+    + Tạo 1 biến RepeatCount=0, tạo textbox Repeat - Checked
+    + NumberSample = NumberSample x RepeatCount - Checked
+    + Mỗi lần repeat tương ứng 1 màu
+    + Không clear listview - Checked
+    + Tạo comboBox GraphChoice chọn đồ thị muốn hiển thị
+- Giải quyết vấn đề reConnect không bắt đầu đo từ SVol
+    + Xem kỹ hàm btConnect, btRun và btCheck
+    + Tìm cách reset bên Arduino
+ */
