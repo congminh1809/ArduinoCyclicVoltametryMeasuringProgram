@@ -149,7 +149,9 @@ namespace CsharpInterface
                     SmoothingData(bufferC);
                     ClearZedGraph();
                     Draw();
-                    btConnect.Text = "Connect";
+                    btRun.Text = "Reset";
+                    btConnect.Text = "Measure Again";
+
                     progressBarMeasure.Value = 0;
                 }
                 //Draw();
